@@ -38,6 +38,26 @@ sets `PORT` automatically.
 `DATABASE_URL` may be omitted only if all of `DB_USER`, `DB_PASSWORD`,
 `DB_HOST`, `DB_PORT`, and `DB_NAME` are supplied instead.
 
+## Demo events
+
+The demo seed adds eight fictional events with category images. It is
+idempotent and does not create tickets or payment records. Run it only against
+a development or staging database; it requires an explicit opt-in and does not
+run when the API starts.
+
+From PowerShell, in the `API` directory, after configuring `.env` to use the
+intended development or staging database:
+
+```powershell
+$env:ALLOW_DEMO_SEED = "true"
+npm.cmd run seed:demo
+Remove-Item Env:ALLOW_DEMO_SEED
+```
+
+By default, the script creates a passwordless demo organizer. To associate
+events with an existing user instead, set `DEMO_ORGANIZER_ID` to that user's
+database ID before running the seed.
+
 ## Frontend configuration
 
 Set `REACT_APP_API_URL` in the Vercel project's environment variables to the
