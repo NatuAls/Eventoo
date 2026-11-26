@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectEvent, updateDescription, updateName } from '../../../Slice/CreateEvent/CreateEvent';
 import style from './BasicInfo.module.css';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';

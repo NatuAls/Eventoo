@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
-import { setMesaggeError, updateCategory, updateVirtualURL } from '../../../Slice/CreateEvent/CreateEvent';
 import { axiosModeCategories } from "../../../Slice/Filter/categorieSlice";
 import style from './Category.module.css'
 import Map from './Map';

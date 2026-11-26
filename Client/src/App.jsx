@@ -98,10 +98,9 @@ function App() {
         <Route path="*" element={<Error />}></Route>
       </Routes>
     </BrowserRouter>
-  <ThemeProvider>
+  </ThemeProvider>
 
   );
 }
 
 export default App;
-
