@@ -10,7 +10,6 @@ import { faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import CarouselPremium from './CarouselPremium/CarouselPremium';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
-import { makeStyles } from '@mui/material/styles';
 import { useNavigate } from 'react-router-dom';
 
 
@@ -31,24 +30,6 @@ const CaruselAll = () => {
   const handleMoreEvents = () => {
     setMoreEvents(moreEvents + 10)
   }
-
-  const useStyles = makeStyles((theme) => ({
-    fab: {
-      backgroundColor: '#BC4001',
-      textTransform: 'none',
-      fontFamily: 'Poppins',
-      fontWeight: 400,
-      gap: '8px',
-      alignItems: 'center',
-      paddingRight: '18px',
-      color: '#fff',
-      '&:hover': {
-        backgroundColor: '#9F3200',
-      },
-    },
-  }));
-  
-  const classes = useStyles();
 
   return (
     <div className={Style.container_carusel}>
@@ -88,7 +69,24 @@ const CaruselAll = () => {
           }
         </div>
         <div className={Style.fab}>
-          <Fab onClick={() => navigate("/create-event")} className={classes.fab} variant="extended" size='large'>
+          <Fab
+            onClick={() => navigate("/create-event")}
+            sx={{
+              backgroundColor: '#BC4001',
+              textTransform: 'none',
+              fontFamily: 'Poppins',
+              fontWeight: 400,
+              gap: '8px',
+              alignItems: 'center',
+              paddingRight: '18px',
+              color: '#fff',
+              '&:hover': {
+                backgroundColor: '#9F3200',
+              },
+            }}
+            variant="extended"
+            size="large"
+          >
             <AddIcon />
             Create event
           </Fab>

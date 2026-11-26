@@ -2,42 +2,30 @@ import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { axiosModeCategories } from "../../../../Slice/Filter/categorieSlice";
 import { getAllEvents } from "../../../../Slice/Admin/AdminSlice";
-import { makeStyles } from "@mui/material/styles";
 import Pie from "./Pie/Pie";
 import StackedBarChart from "./Table/TableStadistic";
 
-const useStyles = makeStyles({
-  chartContainer: {
-    display: "grid",
-    gap: "50",
-    alignItems: "center",
-    marginTop: "3rem",
-    height: "100%",
-    width: "100%",
-    justifyContent:'canter'
-  },
-  title: {
-    fontSize: '3rem',
-    fontWeight: 'bold',
-    textTransform: 'uppercase',
-    color: 'var(--accent-color)',
-    letterSpacing: '2px',
-    lineHeight: '1.2',
-    marginBottom: '30px',
-    paddingBottom: '10px',
-    borderBottom: '1px solid #ddd'
-  },
-  chart: {
-    width: "100%",
-    height: "100%",
-    marginTop: "-1rem",
-  },
-  loadingContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
+const chartContainerStyle = {
+  display: "grid",
+  gap: "50px",
+  alignItems: "center",
+  marginTop: "3rem",
+  height: "100%",
+  width: "100%",
+  justifyContent: "center",
+};
+
+const titleStyle = {
+  fontSize: "3rem",
+  fontWeight: "bold",
+  textTransform: "uppercase",
+  color: "var(--accent-color)",
+  letterSpacing: "2px",
+  lineHeight: "1.2",
+  marginBottom: "30px",
+  paddingBottom: "10px",
+  borderBottom: "1px solid #ddd",
+};
 
 function Grafict() {
   const categories = useSelector(
@@ -47,8 +35,6 @@ function Grafict() {
   const dispatch = useDispatch();
   const [chartData, setChartData] = useState(null);
   const [modality, setModality] = useState(null);
-  const classes = useStyles();
-
   useEffect(() => {
     dispatch(axiosModeCategories());
     dispatch(getAllEvents());
@@ -97,12 +83,12 @@ function Grafict() {
 
 
   return (
-    <div className={classes.chartContainer}>
-      <h2 className={classes.title}>Events for Category</h2>
+    <div style={chartContainerStyle}>
+      <h2 style={titleStyle}>Events for Category</h2>
       <Pie data={chartData} />
-      <h2 className={classes.title}>Events for Modality</h2>
+      <h2 style={titleStyle}>Events for Modality</h2>
       <Pie data={modality}  />
-      <h2 className={classes.title}>Events sold in the year</h2>
+      <h2 style={titleStyle}>Events sold in the year</h2>
       <StackedBarChart />
     </div>
   );

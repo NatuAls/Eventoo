@@ -3,34 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { axiosModeCategories } from "../../../Slice/Filter/categorieSlice";
 import { getAllEvents } from "../../../Slice/Admin/AdminSlice";
 import { PieChart, Pie, Cell, Legend, Tooltip } from "recharts";
-import { makeStyles } from "@mui/material/styles";
 import CircularProgress from "@mui/material/CircularProgress";
-
-const useStyles = makeStyles({
-  chartContainer: {
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-    marginTop: "3rem",
-    height: "100%",
-    width: "100%",
-  },
-  title: {
-    fontSize: "2rem",
-    fontWeight: "bold",
-    marginBottom: "1rem",
-  },
-  chart: {
-    width: "100%",
-    height: "100%",
-    marginTop: "-1rem",
-  },
-  loadingContainer: {
-    display: "flex",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
 
 function Grafict() {
   const categories = useSelector(
@@ -40,8 +13,6 @@ function Grafict() {
   const dispatch = useDispatch();
   const [chartData, setChartData] = useState(null);
   const [loading, setLoading] = useState(true);
-  const classes = useStyles();
-
   useEffect(() => {
     dispatch(axiosModeCategories());
     dispatch(getAllEvents());
@@ -94,14 +65,14 @@ function Grafict() {
   };
 
   return (
-    <div className={classes.chartContainer}>
-      <h2 className={classes.title}>Events for Category</h2>
+    <div style={{ display: "flex", flexDirection: "column", alignItems: "center", marginTop: "3rem", height: "100%", width: "100%" }}>
+      <h2 style={{ fontSize: "2rem", fontWeight: "bold", marginBottom: "1rem" }}>Events for Category</h2>
       {loading ? (
-        <div className={classes.loadingContainer}>
+        <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
           <CircularProgress />
         </div>
       ) : (
-        <PieChart className={classes.chart} width={800} height={400}>
+        <PieChart style={{ width: "100%", height: "100%", marginTop: "-1rem" }} width={800} height={400}>
           <Pie
             data={chartData}
             dataKey="value"
