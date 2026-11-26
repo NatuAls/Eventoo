@@ -36,7 +36,7 @@ import { getEventsManagement } from "./Slice/eventsManagement/eventsManagementSl
 
 export const API = axios.create({
   // baseURL: 'http://localhost:3001',
-  baseURL: 'https://api.eventoo.com.ar',
+  baseURL: (process.env.REACT_APP_API_URL || 'https://api.eventoo.com.ar').replace(/\/+$/, ''),
   headers: {
     common: {
       'authorization': 'Bearer ' + localStorage.getItem("token"),

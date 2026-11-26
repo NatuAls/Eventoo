@@ -6,15 +6,25 @@ const bcrypt = require("bcrypt");
 const moment = require('moment');
 
 
-const { DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
-
-const sequelize = new Sequelize(
-  `postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}:${DB_PORT}/${DB_NAME}`,
-  {
-    logging: false, // set to console.log to see the raw SQL queries
-    native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-  }
+const { DATABASE_URL, DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, DB_NAME } = process.env;
+const databaseUrl = DATABASE_URL || (
+  DB_USER && DB_PASSWORD && DB_HOST && DB_PORT && DB_NAME
+    ? `postgres://${encodeURIComponent(DB_USER)}:${encodeURIComponent(DB_PASSWORD)}@${DB_HOST}:${DB_PORT}/${DB_NAME}`
+    : null
 );
+
+if (!databaseUrl) {
+  throw new Error("Set DATABASE_URL or all of DB_USER, DB_PASSWORD, DB_HOST, DB_PORT, and DB_NAME.");
+}
+
+const sequelize = new Sequelize(databaseUrl, {
+  dialect: "postgres",
+  logging: false, // set to console.log to see the raw SQL queries
+  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
+  dialectOptions: process.env.DB_SSL === "true"
+    ? { ssl: { require: true, rejectUnauthorized: true } }
+    : {},
+});
 const basename = path.basename(__filename);
 
 const modelDefiners = [];
