@@ -17,7 +17,7 @@ function Users() {
   useEffect(() => {
     if(!users.length){
     dispatch(getUsers());}
-  }, []);
+  }, [dispatch, users.length]);
   const handleBanned = (e) => {
     dispatch(disableUser(e));
 

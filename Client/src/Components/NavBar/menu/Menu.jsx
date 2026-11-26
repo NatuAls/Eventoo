@@ -18,7 +18,7 @@ const Menu = () => {
   const navigate = useNavigate();
   const location = useLocation()
   const [isOpen, setIsOpen] = useState(false);
-  const { name, last_name, email, profile_pic, isLogged, roleAdmin } =
+  const { name, last_name, profile_pic, isLogged, roleAdmin } =
     useSelector((state) => state.user);
   const dispatch = useDispatch();
   const { setShowSessionModal } = useContext(SessionContext);
@@ -70,7 +70,7 @@ const Menu = () => {
       <div onClick={handleClick} className={Styles.userToggle}>
         {isLogged ? (
           <div className={Styles.userLogged}>
-            <img src={profile_pic} alt="user photo" />
+            <img src={profile_pic} alt="Profile" />
             <BiChevronDown color="#fffa" size={18} />
           </div>
         ) : (
@@ -84,7 +84,7 @@ const Menu = () => {
       <div className={isOpen ? Styles.menuOpen : Styles.menuClose}>
         <div className={Styles.row}>
           <div className={Styles.icon}>
-            <img src={profile_pic} />
+            <img src={profile_pic} alt={`${name} ${last_name}`} />
           </div>
           <div className={Styles.label}>{`${name} ${last_name}`}</div>
         </div>
@@ -132,4 +132,3 @@ const Menu = () => {
 };
 
 export default Menu;
-

@@ -82,14 +82,14 @@ const FilterMode = () => {
           <button
             onClick={handleClick}
             value={'true'}
-            className={`${Style.btn} ${filter.isNextWeekend == 'true' ? Style.active : ''}`}
+            className={`${Style.btn} ${filter.isNextWeekend === 'true' ? Style.active : ''}`}
             name='isNextWeekend'>
             <MdDateRange style={{pointerEvents: 'none'}} />Next weekend
           </button>
           <button
             onClick={handleClick}
             value={'true'}
-            className={`${Style.btn} ${filter.isToday == 'true' ? Style.active : ''}`}
+            className={`${Style.btn} ${filter.isToday === 'true' ? Style.active : ''}`}
             name='isToday'>
             <MdHistory style={{pointerEvents: 'none'}} /> Today
           </button>

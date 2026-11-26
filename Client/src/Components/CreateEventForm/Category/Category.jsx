@@ -2,18 +2,16 @@ import React, { useState, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux'
 import { axiosModeCategories } from "../../../Slice/Filter/categorieSlice";
 import style from './Category.module.css'
-import Map from './Map';
 import ButtonGroup from "./ButtonGroup";
 import CheckboxFacilities from './CheckBox';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
-import Box from "@mui/material/Box";
 import GoogleMaps from '../../Modal/ModalSession/MapRegister';
 
 
 function Category({ input, setInput, errors, showMsg, setShowMsg, selectedModality, setSelectedModality }) {
   const dispatch = useDispatch();//                      STATE GLOBAL.REDUCER.PROPIEDADREDUCER
-  const { categories, loading, error } = useSelector(state => state.categories.categories);
+  const { categories, loading } = useSelector(state => state.categories.categories);
 
   const [filteredCategories, setFilteredCategories] = useState([]);
   const selectRef = useRef()

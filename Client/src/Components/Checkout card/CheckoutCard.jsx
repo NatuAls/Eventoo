@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { SessionContext } from "../..";
 import { createEvent } from "../../Slice/CreateEvent/CreateEvent";

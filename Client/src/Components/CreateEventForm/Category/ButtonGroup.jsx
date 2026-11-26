@@ -5,6 +5,7 @@ import style from "./ButtonGroup.module.css";
 const ButtonGroup = ({ buttons, handleGroup, input }) => {
   
   const [clickedId, setClickedId] = useState(0);
+  const secondButton = buttons[1];
 
   const handleClick = (e, id) => {
     setClickedId(id);
@@ -13,21 +14,21 @@ const ButtonGroup = ({ buttons, handleGroup, input }) => {
 
   useEffect(() => {
     if(input) {
-      if(buttons[1] === 'Virtual') {
+      if(secondButton === 'Virtual') {
         if(input.modality && input.modality === 'Virtual') {
           setClickedId(1)
         }
-      } else if(buttons[1] === 'Private') {
+      } else if(secondButton === 'Private') {
         if(input.isPublic === false) {
           setClickedId(1)
         }
-      } else if(buttons[1] === 'Free') {
+      } else if(secondButton === 'Free') {
         if(input.isPaid === false) {
           setClickedId(1)
         }
       }
     }
-  }, [input])
+  }, [input, secondButton])
  
   return (
     <div className={style.groupcont}>

@@ -22,7 +22,7 @@ const LoginModal = () => {
   };
 
   const validate = (input) => {
-    const regexp_email = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const regexp_email = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/;
     const errors = {};
 
     if (input.email.length === 0) {
@@ -80,7 +80,7 @@ const LoginModal = () => {
       text: "continue_with",
       logo_alignment: "center",
     });
-  }, []);
+  }, [dispatch]);
 
   return (
     <div className={styles.loginWrapper}>

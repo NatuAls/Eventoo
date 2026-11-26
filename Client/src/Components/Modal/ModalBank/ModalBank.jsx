@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { useState } from 'react';
 import Modal from '../Modal'
 import { createBankAccount } from '../../../Slice/BankAcount/BankAcount';
@@ -7,9 +7,6 @@ import BankAccountCards from './BankAccountCards';
 import style from './ModalBank.module.css'
 import { TextField } from '@mui/material';
 import InputAdornment from '@mui/material/InputAdornment';
-import Input from '@mui/material/Input';
-import FormControl from '@mui/material/FormControl';
-import FormHelperText from '@mui/material/FormHelperText';
 
 
 const ModalBank = ({ setShowModal, input, setInput }) => {
@@ -20,6 +17,7 @@ const ModalBank = ({ setShowModal, input, setInput }) => {
   const { bankAccount } = useSelector(state => state.bankAccounts);
   const [errors, setErrors] = useState({});
   const [showMsg, setShowMsg] = useState({});
+  const cbuNums = CBU.length;
 
 
   function validate(name, CBU) {
@@ -34,12 +32,6 @@ const ModalBank = ({ setShowModal, input, setInput }) => {
 
     return errors;
   }
-  const cbuNums = CBU.length;
-
-  useEffect((name, cbu) => {
-    const cbuNums = CBU.length;
-  }, [name, CBU]);
-
   const handleBlur = (e) => {
     setErrors(validate(name, CBU));
     setShowMsg({

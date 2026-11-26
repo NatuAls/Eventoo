@@ -2,15 +2,13 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getEventsManagement } from '../../../Slice/eventsManagement/eventsManagementSlice'
 // import './Events.css'
-import { FaEdit } from "react-icons/fa";
-import { TiArrowSortedDown, TiArrowUnsorted, TiArrowSortedUp } from "react-icons/ti";
+import { TiArrowSortedDown, TiArrowUnsorted } from "react-icons/ti";
 import {
   setFilterSellerEvent,
   sortByAscendingEventsSeller,
   sortByDescendingEventsSeller
 } from "../../../Slice/eventsManagement/eventsManagementSlice";
 
-import { AiOutlineCheck } from "react-icons/ai";
 import SearchBar from "../../Admin/SearchBar/SearchAdmin";
 import Completed from "./Status/Expired/Expired";
 import Canceled from "./Status/Canceled/Canceled";
@@ -19,7 +17,6 @@ import Denied from "./Status/Denied/Denied";
 import Approved from "./Status/Approved/Approved";
 import Expired from "./Status/Expired/Expired";
 import Pending from "./Status/Pending/Pending";
-import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai";
 
 
 
@@ -67,7 +64,7 @@ function Seller() {
         <div className="sapListHeader">
           <div
             className="sapListItem sapListItemWide"
-            id={sortType.type == `name` ? "sapSelection" : undefined}
+            id={sortType.type === `name` ? "sapSelection" : undefined}
           >
             {sortType.type === 'name' ?
               <TiArrowUnsorted
@@ -83,7 +80,7 @@ function Seller() {
           </div>
           <div
             className="sapListItem sapListItemWide"
-            id={sortType.type == `start_date` ? "sapSelection" : undefined}
+            id={sortType.type === `start_date` ? "sapSelection" : undefined}
           >
             {sortType.type === 'start_date' ?
               <TiArrowUnsorted
@@ -99,7 +96,7 @@ function Seller() {
           </div>
           <div
             className="sapListItem"
-            id={sortType.type == `isPremium` ? "sapSelection" : undefined}
+            id={sortType.type === `isPremium` ? "sapSelection" : undefined}
           >
             {sortType.type === 'isPremium' ?
               <TiArrowUnsorted
@@ -115,7 +112,7 @@ function Seller() {
           </div>
           <div
             className="sapListItem"
-            id={sortType.type == `status` ? "sapSelection" : undefined}
+            id={sortType.type === `status` ? "sapSelection" : undefined}
           >
             {sortType.type === 'status' ?
               <TiArrowUnsorted
@@ -198,7 +195,5 @@ function Seller() {
 }
 
 export default Seller;
-
-
 
 

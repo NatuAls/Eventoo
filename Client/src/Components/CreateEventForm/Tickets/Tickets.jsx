@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { useContext } from 'react';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { SessionContext } from '../../..';
 import ModalBank from '../../Modal/ModalBank/ModalBank';
 import ButtonGroup from '../Category/ButtonGroup';
@@ -9,7 +8,6 @@ import style from './Tickets.module.css';
 import Textfield from "@mui/material/TextField";
 import IconButton from "@mui/material/IconButton";
 import InputAdornment from "@mui/material/InputAdornment";
-import { AiFillEyeInvisible, AiFillEye } from "react-icons/ai";
 import Visibility from '@mui/icons-material/Visibility';
 import VisibilityOff from '@mui/icons-material/VisibilityOff';
 import TextField from '@mui/material/TextField';
@@ -18,18 +16,12 @@ import { Input } from '@mui/material';
 
 
 function Tickets({ input, setInput, errors, showMsg, setShowMsg,loading }) {
-  const dispatch = useDispatch();
-  const [isPublic, setIsPublic] = useState(true);
-  const [isPaid, setIsPaid] = useState(true);
   const [showModal, setShowModal] = useState(false);
   const { bankAccount } = useSelector(state => state.bankAccounts);
   const accountID = input.bankAccount;
   const { setShowSessionModal } = useContext(SessionContext);
   const { isLogged } = useSelector(state => state.user);
   const [showPassword, setShowPassword] = useState(false);
-
-  useEffect(() => {
-  }, [isPublic]);
 
 
   const handleBlur = (e) => {

@@ -12,6 +12,8 @@ function Map() {
 
   const { address_line, city, state, country } = useSelector(state => state.eventDetail.eventDetail.address);
   const [location, setLocation] = useState(null);
+  // This library uses its `style` prop for a Google Maps style query string.
+  const mapProps = { style };
 
   useEffect(() => {
     async function fetchData(){
@@ -21,12 +23,12 @@ function Map() {
       setLocation({ lat, lng });
     }
     fetchData();
-  }, []);
+  }, [address_line, city, state, country]);
 
   return (
     <>
       {location &&
-        <StaticGoogleMap style={style} zoom={16} size="920x350" className="img-fluid" apiKey="AIzaSyDjaoLiwIGBU9Hr5hr1538Ddbk8n0m-a3g">
+        <StaticGoogleMap {...mapProps} zoom={16} size="920x350" className="img-fluid" apiKey="AIzaSyDjaoLiwIGBU9Hr5hr1538Ddbk8n0m-a3g">
           <Marker scale={2} iconURL="https://eventbrite-s3.s3.amazonaws.com/marketing/eds/static-map/custom-markers/pin-listings@1x.png" location={location} />
         </StaticGoogleMap>
       }

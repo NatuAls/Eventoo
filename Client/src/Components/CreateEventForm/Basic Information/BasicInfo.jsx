@@ -1,13 +1,10 @@
-import React, { useState } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
+import React from 'react';
 import style from './BasicInfo.module.css';
 import TextField from '@mui/material/TextField';
 import MenuItem from '@mui/material/MenuItem';
 import Box from "@mui/material/Box";
 
 function BasicInfo({ input, setInput, errors, showMsg, setShowMsg, loading }) {
-    const dispatch = useDispatch();
-
     const agesRange = [
         {
             value: 'ALL PUBLIC',

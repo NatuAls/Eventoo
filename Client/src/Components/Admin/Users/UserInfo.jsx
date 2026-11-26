@@ -1,8 +1,4 @@
 import React from "react";
-import { RiAdminLine, RiAdminFill } from "react-icons/ri";
-import { TiArrowUnsorted } from "react-icons/ti";
-import { BsHandThumbsUp } from "react-icons/bs";
-import { AiFillLike } from "react-icons/ai";
 import { IoMdArrowDropdownCircle, IoMdArrowDropupCircle } from "react-icons/io";
 import User from "../../../Assets/UserProfile.png";
 import Styles from './User.module.css'
@@ -104,7 +100,11 @@ const UserInfo = ({
       <div className={`${Styles.sapListRow}`} key={user.id}>
         <div className={`${Styles.sapListItem} ${Styles.sap}`}>{user.id}</div>
         <div className={`${Styles.info} ${Styles.sap}`} id="sapListImage">
-          <img className={`${Styles.sapListImage}`} src={user.profile_pic ? user.profile_pic : User} />
+          <img
+            className={`${Styles.sapListImage}`}
+            src={user.profile_pic ? user.profile_pic : User}
+            alt={`${user.name} ${user.last_name}'s profile`}
+          />
           {`${user?.name} ${user?.last_name}`}
         </div>
         <div className={`${Styles.info} ${Styles.sapListItemWide} ${Styles.sap}`}>{user?.email}</div>

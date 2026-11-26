@@ -15,10 +15,10 @@ const ComponentContact = () => {
           <div className={style.description}>
             <h3 className={style.h3}>Ana Lucia Bulacios Arroyo</h3>
             <p>
-              <a target="_blank" href="https://github.com/analubulacios">GitHub</a>
+              <a target="_blank" href="https://github.com/analubulacios" rel="noreferrer">GitHub</a>
             </p>
             <p>
-              <a target="_blank" href="https://www.linkedin.com/in/ana-lucia-bulacios-9592a8255/">
+              <a target="_blank" href="https://www.linkedin.com/in/ana-lucia-bulacios-9592a8255/" rel="noreferrer">
                 LinkedIn
               </a>
             </p>
@@ -34,10 +34,10 @@ const ComponentContact = () => {
           <div className={style.description}>
             <h3 className={style.h3}>Andrés Del Fabro</h3>
             <p>
-              <a target="_blank" href="https://github.com/Secterum">GitHub</a>
+              <a target="_blank" href="https://github.com/Secterum" rel="noreferrer">GitHub</a>
             </p>
             <p>
-              <a target="_blank" href="https://www.linkedin.com/in/andres-delfabro/">
+              <a target="_blank" href="https://www.linkedin.com/in/andres-delfabro/" rel="noreferrer">
                 LinkedIn
               </a>
             </p>
@@ -53,10 +53,10 @@ const ComponentContact = () => {
           <div className={style.description}>
             <h3 className={style.h3}>Emanuel Jesus Quintanilla</h3>
             <p>
-              <a target="_blank" href="https://github.com/Emanuel85">GitHub</a>
+              <a target="_blank" href="https://github.com/Emanuel85" rel="noreferrer">GitHub</a>
             </p>
             <p>
-              <a target="_blank" href="https://www.linkedin.com/in/emanuel-quintanilla-635819181/">
+              <a target="_blank" href="https://www.linkedin.com/in/emanuel-quintanilla-635819181/" rel="noreferrer">
                 LinkedIn
               </a>
             </p>
@@ -72,10 +72,10 @@ const ComponentContact = () => {
           <div className={style.description}>
             <h3 className={style.h3}>Federico Gastón Cid</h3>
             <p>
-              <a target="_blank" href="https://github.com/fede-cid">GitHub</a>
+              <a target="_blank" href="https://github.com/fede-cid" rel="noreferrer">GitHub</a>
             </p>
             <p>
-              <a target="_blank" href="https://www.linkedin.com/in/federico-cid-519421188/">
+              <a target="_blank" href="https://www.linkedin.com/in/federico-cid-519421188/" rel="noreferrer">
                 LinkedIn
               </a>
             </p>
@@ -91,10 +91,10 @@ const ComponentContact = () => {
           <div className={style.description}>
             <h3 className={style.h3}>Mary Laura Betancourt S.</h3>
             <p>
-              <a target="_blank" href="https://github.com/marylaurab">GitHub</a>
+              <a target="_blank" href="https://github.com/marylaurab" rel="noreferrer">GitHub</a>
             </p>
             <p>
-              <a target="_blank" href="https://www.linkedin.com/in/mary-laura-betancourt-sequera-518ba9207/">
+              <a target="_blank" href="https://www.linkedin.com/in/mary-laura-betancourt-sequera-518ba9207/" rel="noreferrer">
                 LinkedIn
               </a>
             </p>
@@ -110,10 +110,10 @@ const ComponentContact = () => {
           <div className={style.description}>
             <h3 className={style.h3}>Mariano Ibarra Testa</h3>
             <p>
-              <a target="_blank" href="https://github.com/MarianoIT1">GitHub</a>
+              <a target="_blank" href="https://github.com/MarianoIT1" rel="noreferrer">GitHub</a>
             </p>
             <p>
-              <a target="_blank" href="https://www.linkedin.com/in/marianoibarra/">LinkedIn</a>
+              <a target="_blank" href="https://www.linkedin.com/in/marianoibarra/" rel="noreferrer">LinkedIn</a>
             </p>
           </div>
         </div>
@@ -127,10 +127,10 @@ const ComponentContact = () => {
           <div className={style.description}>
             <h3 className={style.h3}>Nahuel Ismael Alesso</h3>
             <p>
-              <a target="_blank" href="https://github.com/NatuAls">GitHub</a>
+              <a target="_blank" href="https://github.com/NatuAls" rel="noreferrer">GitHub</a>
             </p>
             <p>
-              <a target="_blank" href="https://www.linkedin.com/in/nahualesso/">LinkedIn</a>
+              <a target="_blank" href="https://www.linkedin.com/in/nahualesso/" rel="noreferrer">LinkedIn</a>
             </p>
           </div>
         </div>
@@ -144,10 +144,10 @@ const ComponentContact = () => {
           <div className={style.description}>
             <h3 className={style.h3}>Paola Guerra Llerena</h3>
             <p>
-              <a target="_blank" href="https://github.com/paolagll">GitHub</a>
+              <a target="_blank" href="https://github.com/paolagll" rel="noreferrer">GitHub</a>
             </p>
             <p>
-              <a target="_blank" href="https://www.linkedin.com/in/paola-guerra-366702247/">
+              <a target="_blank" href="https://www.linkedin.com/in/paola-guerra-366702247/" rel="noreferrer">
                 LinkedIn
               </a>
             </p>

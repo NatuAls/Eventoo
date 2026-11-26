@@ -32,6 +32,12 @@
   color: var(--secondary-color);
 }
 
+.socialIcon {
+  color: var(--white-text);
+  display: inline-flex;
+  margin-right: 10px;
+}
+
 
 .Titulo {
   font-weight: 300;

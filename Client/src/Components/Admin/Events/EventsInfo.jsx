@@ -1,9 +1,6 @@
 import React from "react";
 import "./Events.css";
-import { FaEdit } from "react-icons/fa";
 import { IoMdArrowDropdownCircle, IoMdArrowDropupCircle } from "react-icons/io";
-import { RiDeleteBinLine } from "react-icons/ri";
-import { AiOutlineCheck, AiOutlineClose } from "react-icons/ai";
 
 const EventsInfo = ({ events, accent, desccent, handleChange }) => (
   <div className="sapList">
@@ -91,10 +88,10 @@ const EventsInfo = ({ events, accent, desccent, handleChange }) => (
           {event?.isActive ? <p className='active'>Active</p> : <p className='banned'>Desactive</p>}
         </div>
         <div className="sapListItem sap">
-          <button disabled={event?.isActive} className={event?.isActive ? "btnSap" + " disableBtnSap" : "btnSap"} onClick={() => handleChange(event.id)}>
+          <button disabled={event?.isActive} className={event?.isActive ? "btnSap disableBtnSap" : "btnSap"} onClick={() => handleChange(event.id)}>
           <p className='active'>Active</p>
           </button>
-          <button disabled={!event?.isActive} className={!event?.isActive ? "btnSap" + " disableBtnSap" : "btnSap"} onClick={() => handleChange(event.id)}>
+          <button disabled={!event?.isActive} className={!event?.isActive ? "btnSap disableBtnSap" : "btnSap"} onClick={() => handleChange(event.id)}>
           <p className='banned'>Desactive</p>
           </button>
         </div>

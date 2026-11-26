@@ -1,8 +1,7 @@
 import React from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { putApprovePayment } from '../../../Slice/eventsManagement/eventsManagementSlice'
 import Modal from '../Modal'
-import { Spinner } from '../Spinner/Spinner'
 import styles from './ModalSellerVoucher.module.css'
 import { TiCancel } from "react-icons/ti";
 import { TiTick } from "react-icons/ti";
@@ -75,6 +74,3 @@ const ModalSellerVoucher = ({ setShowModal, transaction, btnSelector }) => {
 }
 
 export default ModalSellerVoucher
-
-
-{/* <div onClick={() => setShowModal(false)}>x</div> */ }

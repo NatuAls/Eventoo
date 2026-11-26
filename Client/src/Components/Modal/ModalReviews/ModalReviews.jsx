@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Modal from '../Modal'
 import style from './ModalReviews.module.css'
 import Rating from '@mui/material/Rating';
@@ -9,17 +9,7 @@ import { useSelector } from 'react-redux';
 import moment from 'moment';
 
 const ModalReviews = ({ stgData, setConfirm, setShowModal }) => {
-    const [value, setValue] = React.useState(4);
-    const [randomReviews, setRandomReviews] = useState([]);
     const { eventDetail } = useSelector(state => state.eventDetail);
-
-    const labels = {
-        1: 'Useless',
-        2: 'Poor',
-        3: 'Ok',
-        4: 'Good',
-        5: 'Excellent',
-    };
 
     const handleClick = (e) => {
         e.preventDefault();
@@ -56,7 +46,10 @@ const ModalReviews = ({ stgData, setConfirm, setShowModal }) => {
                                             margin: 2,
                                             objectFit: 'cover'
                                         }}>
-                                            <img src={review.reviewedBy.profile_pic} />
+                                            <img
+                                                src={review.reviewedBy.profile_pic}
+                                                alt={`${review.reviewedBy.name} ${review.reviewedBy.last_name}`}
+                                            />
                                         </Avatar>
                                         <div className={style.reviewInfo}>
                                             <div className={style.nameDate}>

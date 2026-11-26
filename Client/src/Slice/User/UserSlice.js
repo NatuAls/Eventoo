@@ -150,7 +150,7 @@ export const update = createAsyncThunk(
 
 export const getUserData = createAsyncThunk(
   "user/getUserData",
-  async (undefined, { rejectWithValue }) => {
+  async (_arg, { rejectWithValue }) => {
     try {
       const response = await API.get("/user");
       return response.data;

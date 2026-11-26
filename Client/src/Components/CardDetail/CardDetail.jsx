@@ -39,15 +39,14 @@ const premium_sx = {
 }
 
 const CardDetailPublic = () => {
-  const { eventDetail, loading, error } = useSelector(
+  const { eventDetail, loading } = useSelector(
     (state) => state.eventDetail
   );
   const { data } = useSelector(state => state.eventsManagement);
   const dispatch = useDispatch();
 
   // estados para usuario organizador
-  const user = useSelector((state) => state.user);
-  const { isLogged } = useSelector(state => state.user);
+  const { id: userId, isLogged } = useSelector(state => state.user);
   const { favorites } = useSelector(state => state.favorites);
   const { setShowSessionModal } = useContext(SessionContext);
   const [thisLoading, setThisLoading] = useState(false);
@@ -127,19 +126,34 @@ const CardDetailPublic = () => {
 
   useEffect(() => {
     dispatch(getEventsManagement());
-    if (user.isLogged) {
-      if (eventDetail.organizer) {
-        if (user.id === eventDetail.organizer.id) {
-          dispatch(setOrganizer(true));
-          dispatch(setEditedEvent({
-            ...editedEvent,
-            name: eventDetail.name,
-            description: eventDetail.description,
-          }));
-        }
+  }, [dispatch, eventDetail.id, isLogged]);
+
+  useEffect(() => {
+    if (isLogged && userId === eventDetail.organizer?.id) {
+      dispatch(setOrganizer(true));
+      if (
+        !editedEvent.edited &&
+        (editedEvent.name !== eventDetail.name ||
+          editedEvent.description !== eventDetail.description)
+      ) {
+        dispatch(setEditedEvent({
+          name: eventDetail.name,
+          description: eventDetail.description,
+          edited: false,
+        }));
       }
     }
-  }, [eventDetail, user]);
+  }, [
+    dispatch,
+    editedEvent.description,
+    editedEvent.edited,
+    editedEvent.name,
+    eventDetail.description,
+    eventDetail.name,
+    eventDetail.organizer?.id,
+    isLogged,
+    userId,
+  ]);
 
   return (
     <div className={style.background}>
@@ -153,7 +167,7 @@ const CardDetailPublic = () => {
                     ? eventDetail.cover_pic
                     : covers[eventDetail.category.name]
                 }
-                alt="cover_pic"
+                alt={eventDetail.name ? `Cover for ${eventDetail.name}` : "Event cover"}
               />
             </div>
 
@@ -184,9 +198,14 @@ const CardDetailPublic = () => {
               }
 
               {organizer === true &&
-                <a className={style.organizericon} onClick={editButton}>
+                <button
+                  type="button"
+                  className={style.organizericon}
+                  aria-label="Edit event"
+                  onClick={editButton}
+                >
                   <AiFillEdit size={30} style={{ color: '#BC4001' }} />
-                </a>
+                </button>
               }
             </div>
 
@@ -300,7 +319,6 @@ const CardDetail = () => {
   const dispatch = useDispatch();
   const { id } = useParams();
   const [privatePass, setPrivatePass] = useState("");
-  const user = useSelector((state) => state.user);
   const { showEvent, loading, error, errorPass, eventDetail } = useSelector(
     (state) => state.eventDetail
   );
@@ -310,7 +328,7 @@ const CardDetail = () => {
     return () => {
       dispatch(clear());
     }
-  }, []);
+  }, [dispatch, id]);
 
   const handleSubmit = (e) => {
     e.preventDefault()

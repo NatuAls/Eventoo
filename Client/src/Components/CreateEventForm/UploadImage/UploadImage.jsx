@@ -111,7 +111,7 @@ function UploadImage({input, setInput}) {
                                 <button type='button' className={styles.deleteImg} onClick={handleDelete} >
                                     <FontAwesomeIcon icon={faXmark} size='xl' />
                                 </button>
-                                <img className={styles.imgPreview} src={preview} />
+                                <img className={styles.imgPreview} src={preview} alt="Event cover preview" />
                             </div>
                         
         }

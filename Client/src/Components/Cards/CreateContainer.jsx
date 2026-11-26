@@ -31,7 +31,7 @@ const CreateContainer = ({ details }) => {
       })
     }
 
-  }, [inView])
+  }, [animation, inView])
 
   if (Object.entries(details).length === 0) {
     return null;

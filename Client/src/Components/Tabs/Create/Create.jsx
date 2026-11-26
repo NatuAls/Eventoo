@@ -13,12 +13,11 @@ import { TiArrowSortedDown, TiArrowUnsorted  } from "react-icons/ti";
 import { BiEdit } from "react-icons/bi";
 import { MdDelete } from "react-icons/md";
 import SearchBar from "../../Admin/SearchBar/SearchAdmin";
-import { deleteEvent } from "../../../Slice/eventsManagement/eventsManagementSlice";
 import ModalDeleteEvent from "../../Modal/ModalDeleteEvent/ModalDeleteEvent";
 
 function Buys() {
   const [showModal, setShowModal] = useState(false);
-  const { data: {eventsCreated}, loading: {get: loading} } = useSelector(state => state.eventsManagement)
+  const { data: {eventsCreated} } = useSelector(state => state.eventsManagement)
   const [sortType, setSortType] = useState({ type:null, id: 2 });
   const dispatch = useDispatch();
 
@@ -51,7 +50,7 @@ function Buys() {
         <div className="sapListHeader">
           <div
             className="sapListItem sapListItemWide"
-            id={sortType.type == `name` ? "sapSelection" : undefined}
+            id={sortType.type === `name` ? "sapSelection" : undefined}
           >
             { sortType.type === 'name'? 
             <TiArrowUnsorted
@@ -67,7 +66,7 @@ function Buys() {
           </div>
           <div
             className="sapListItem sapListItemWide"
-            id={sortType.type == `start_date` ? "sapSelection" : undefined}
+            id={sortType.type === `start_date` ? "sapSelection" : undefined}
           >
             {sortType.type === 'start_date'? 
             <TiArrowUnsorted
@@ -83,7 +82,7 @@ function Buys() {
           </div>
           <div
             className="sapListItem"
-            id={sortType.type == `isPremium` ? "sapSelection" : undefined}
+            id={sortType.type === `isPremium` ? "sapSelection" : undefined}
           >
             { sortType.type === 'isPremium'? 
             <TiArrowUnsorted
@@ -99,7 +98,7 @@ function Buys() {
           </div>
           <div
             className="sapListItem"
-            id={sortType.type == `status` ? "sapSelection" : undefined}
+            id={sortType.type === `status` ? "sapSelection" : undefined}
           >
             { sortType.type === 'status'? 
             <TiArrowUnsorted

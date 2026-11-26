@@ -8,7 +8,6 @@ import { getPremiumEvents } from '../../../Slice/PremiumEvents/PremiumEventsSlic
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faHeartBroken } from "@fortawesome/free-solid-svg-icons";
 import CarouselPremium from './CarouselPremium/CarouselPremium';
-import { style } from '@mui/system';
 import Fab from '@mui/material/Fab';
 import AddIcon from '@mui/icons-material/Add';
 import { makeStyles } from '@mui/material/styles';
@@ -97,9 +96,9 @@ const CaruselAll = () => {
         
         {
           events.length > 0 && moreEvents < events.length && !loading && !filter.favorites &&
-            <a className={`btnprimario btnMore`} onClick={handleMoreEvents}>
+            <button type="button" className={`btnprimario btnMore`} onClick={handleMoreEvents}>
               <span>MORE</span>
-            </a>
+            </button>
         }
        
       </div>

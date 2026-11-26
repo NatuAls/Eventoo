@@ -33,7 +33,7 @@ const DataBankAccount = ({ quantity }) => {
     if(transactionWasCancel) {
       navigate(0)
     }
-  }, [transactionWasCancel])
+  }, [navigate, transactionWasCancel])
 
   return (
 
@@ -104,9 +104,6 @@ const DataBankAccount = ({ quantity }) => {
 }
 
 export default DataBankAccount
-
-{/* <Voucher /> */ }
-
 
 
 

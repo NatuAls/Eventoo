@@ -18,8 +18,7 @@ function ContainerButtonRight() {
   const dispatch = useDispatch();
   const [showModal, setShowModal] = useState(false);
 
-  function handleOnClick(event) {
-    event.preventDefault();
+  function handleOnClick() {
     if (editedEvent.edited === true && !Object.keys(errors).length) {
       dispatch(
         axiosModeEditEventDetail({ id, editedEvent })
@@ -43,7 +42,7 @@ function ContainerButtonRight() {
         <img 
           src={eventDetail.organizer.profile_pic ? eventDetail.organizer.profile_pic : UserIcon}
           className={style.profile_pic}
-          alt='user photo'
+          alt='Organizer'
         />
         <div className={style.organizer_text}>
           <p>Organized by</p>
@@ -58,17 +57,17 @@ function ContainerButtonRight() {
       {user.isLogged && organizer === true && (
         <div className={style.organizerbutton_div}>
           <div className={style.organizerbutton}>
-            <a
+            <button
+              type="button"
               className={`btnprimario ${
                 editedEvent.edited === false || Object.keys(errors).length > 0
                   ? style.organizerbutton_disabled
                   : null
               }`}
-              href=""
               onClick={handleOnClick}
             >
               <span>Save Changes</span>
-            </a>
+            </button>
           </div>
         </div>
       )}

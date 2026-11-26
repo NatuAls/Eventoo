@@ -6,8 +6,6 @@ import styles from './LocationFilter.module.css'
 import { useDispatch, useSelector } from 'react-redux';
 import { setFilter } from '../../../Slice/newFilter/newFilterSlice'
 import GoogleMaps from '../../Modal/ModalSession/MapRegister';
-import Fab from '@mui/material/Fab';
-import NavigationIcon from '@mui/icons-material/Navigation';
 
 const LocationFilter = () => {
 
@@ -15,7 +13,6 @@ const LocationFilter = () => {
   const [locationIsOpen, setLocationIsOpen] = useState(false)
   const dropdownRef = useRef()
   const filter = useSelector(state => state.newFilter)
-  const {isLogged} = useSelector(state => state.user)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -40,7 +37,7 @@ const LocationFilter = () => {
 
   useEffect(() => {
     stateSelected.state !== null && stateSelected.state !== undefined && dispatch(setFilter({state: stateSelected.state}))
-  }, [stateSelected])
+  }, [dispatch, stateSelected])
 
 
 

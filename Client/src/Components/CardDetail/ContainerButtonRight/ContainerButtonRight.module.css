@@ -41,7 +41,8 @@
     margin: 0 auto;
 }
 
-.organizerbutton a {
+.organizerbutton a,
+.organizerbutton button {
     margin-top: 20px;
     margin-bottom: 20px;
     width: 75%;

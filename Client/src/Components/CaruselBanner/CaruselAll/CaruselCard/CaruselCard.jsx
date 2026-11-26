@@ -9,7 +9,6 @@ import { SessionContext } from "../../../..";
 import { Chip } from "@mui/material";
 import { MdLocalFireDepartment } from "react-icons/md";
 import { RiMedalLine } from "react-icons/ri"
-import { color } from "@mui/system";
 
 const sx = {
   bgcolor: '#BC4001',

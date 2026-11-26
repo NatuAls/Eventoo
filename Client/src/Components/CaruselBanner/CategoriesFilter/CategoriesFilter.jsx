@@ -17,11 +17,11 @@ const CategoriesFilter = () => {
 
   useEffect(() => {
     dispatch(axiosModeCategories())
-  }, [])
+  }, [dispatch])
 
   useEffect(() => {
     dispatch(getEvents(filter))
-  }, [filter])
+  }, [dispatch, filter])
 
 
   const containerRef = useRef(null);

@@ -1,16 +1,12 @@
 import React, { useState, useMemo } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import style from './DateTime.module.css';
 import TextField from '@mui/material/TextField';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import dayjs from 'dayjs';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 
 function DateTime({ input, setInput, errors, showMsg, setShowMsg, loading }) {
-    const dispatch = useDispatch();
-    const [value, setValue] = React.useState(dayjs('2023-02-17'));
     const today = dayjs();
 
     const [error, setError] = useState(null);

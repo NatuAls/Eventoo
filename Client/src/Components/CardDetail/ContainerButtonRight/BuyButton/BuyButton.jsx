@@ -23,8 +23,6 @@ const BuyButton = () => {
 
   const [showModal, setShowModal] = useState(false)  
   const { data: {buys: eventsBuyed}, loading: {get: loading} } = useSelector(state => state.eventsManagement);
-  const user = useSelector(state => state.user);
-  const { eventDetail } = useSelector(state => state.eventDetail);
   const { isPaid, price } = useSelector(state => state.eventDetail.eventDetail);
   const [tickets, setTickets] = useState(1);
   const totalPrice = (price?.toFixed(2) * tickets).toFixed(2);

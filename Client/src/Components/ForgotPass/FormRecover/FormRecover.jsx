@@ -26,8 +26,11 @@ const FormRecover = () => {
     if (name) {
       navigate("/");
     }
+  }, [name, navigate]);
+
+  useEffect(() => {
     dispatch(RecoverPass(emailtoken));
-  }, [emailtoken, name]);
+  }, [dispatch, emailtoken]);
 
   const handleChange = (e) => {
     setFormData({

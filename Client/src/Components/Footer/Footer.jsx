@@ -25,9 +25,9 @@ const Footer = () => {
       </div>
       <div >
 
-      <a> <FaFacebookSquare size={30}/> </a>
-      <a> <FaInstagram size={30}/> </a>
-      <a> <FaTwitter size={30}/> </a>
+      <span className={Style.socialIcon} aria-hidden="true"><FaFacebookSquare size={30}/></span>
+      <span className={Style.socialIcon} aria-hidden="true"><FaInstagram size={30}/></span>
+      <span className={Style.socialIcon} aria-hidden="true"><FaTwitter size={30}/></span>
 
       </div>
     </footer>

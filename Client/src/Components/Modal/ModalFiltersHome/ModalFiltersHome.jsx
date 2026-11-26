@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import Modal from '../Modal'
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
@@ -6,11 +6,10 @@ import Checkbox from '@mui/material/Checkbox';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import { useDispatch, useSelector } from 'react-redux';
-import { clearFilter, setFilter } from '../../../Slice/newFilter/newFilterSlice';
+import { setFilter } from '../../../Slice/newFilter/newFilterSlice';
 import {TbDisabled, TbParking} from 'react-icons/tb'
 import {MdPets, MdSmokingRooms} from 'react-icons/md'
 import style from './ModalFiltersHome.module.css'
-import { FaLessThanEqual } from 'react-icons/fa';
       
 
 const ModalFiltersHome = ({setShowModal}) => {

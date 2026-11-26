@@ -12,7 +12,7 @@ const ModalTransaction = ({ setShowModal, quantity }) => {
   const [ticketForms, setTicketForms] = useState(Array.from({ length: quantity }, () => ({})));
   const { eventDetail } = useSelector(state => state.eventDetail);
   const { email } = useSelector(state => state.user)
-  const { data: {buys: eventsBuyed}, loading: {post: loading}, error, transactionWasCreated } = useSelector(state => state.eventsManagement)
+  const { loading: {post: loading}, error, transactionWasCreated } = useSelector(state => state.eventsManagement)
   const [isButtonDisabled, setisButtonDisabled] = useState(true)
   
 
@@ -136,5 +136,4 @@ const ModalTransaction = ({ setShowModal, quantity }) => {
 }
 
 export default ModalTransaction;
-
 

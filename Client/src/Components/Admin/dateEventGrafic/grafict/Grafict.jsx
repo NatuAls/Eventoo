@@ -53,19 +53,10 @@ function Grafict() {
     dispatch(axiosModeCategories());
     dispatch(getAllEvents());
   }, [dispatch]);
-  function getRandomColor() {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-  }
-
   useEffect(() => {
     if (events.length && categories.length) {
       const data = categories
-        .map((category, index) => {
+        .map((category) => {
           const results = events.filter((event) =>
             JSON.stringify(event).includes(category.name)
           );
@@ -104,25 +95,6 @@ function Grafict() {
     }
   }, [events, categories]);
 
-  const [activeIndex, setActiveIndex] = useState(-1);
-
-  const onPieEnter = (_, index) => {
-    setActiveIndex(index);
-  };
-
-  const renderCustomTooltip = ({ active, payload }) => {
-    if (active && payload && payload.length) {
-      const { name, value } = payload[0];
-      return (
-        <div className="custom-tooltip">
-          <p className="tooltip-name">{name}</p>
-          <p className="tooltip-value">{`${value} eventos`}</p>
-        </div>
-      );
-    }
-
-    return null;
-  };
 
   return (
     <div className={classes.chartContainer}>

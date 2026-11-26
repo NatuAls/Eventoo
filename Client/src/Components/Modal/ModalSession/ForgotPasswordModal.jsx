@@ -3,7 +3,6 @@ import { SessionContext } from "../../../";
 import Textfield from "@mui/material/TextField";
 import { Spinner } from "../Spinner/Spinner";
 import styles from "./ForgotPasswordModal.module.css";
-import axios from "axios";
 import { API } from "../../../App";
 import { HiX } from 'react-icons/hi'
 
@@ -11,7 +10,7 @@ const ForgotPasswordModal = () => {
   const { setShowSessionModal } = useContext(SessionContext);
 
   const validate = (input) => {
-    const regexp_email = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const regexp_email = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/;
     let error = "";
 
     if (input.length === 0) {

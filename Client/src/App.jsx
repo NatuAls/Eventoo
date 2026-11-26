@@ -64,7 +64,7 @@ function App() {
       dispatch(getFavorites());
       dispatch(getBankAccounts());
     }
-  }, []);
+  }, [dispatch]);
 
 
 

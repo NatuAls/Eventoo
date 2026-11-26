@@ -179,6 +179,10 @@ h1 a:hover {
 }
 
 .organizericon {
+    border: 0;
+    padding: 0;
+    background: none;
+    font: inherit;
     cursor: pointer;
     width: min-content;
     color: var(--secondary-color);

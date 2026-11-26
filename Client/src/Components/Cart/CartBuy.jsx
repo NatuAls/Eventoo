@@ -1,7 +1,7 @@
 import React from "react";
 import Styles from './CartBuy.module.css'
 
-function CartBuy({}) {
+function CartBuy() {
   const items = [
     {
       name: "Metallica",

@@ -1,34 +1,25 @@
-import React, { useEffect, useState, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import React, { useEffect, useState } from 'react'
 import Style from './Voucher.module.css'
-import { loadPaymentProof, cancelTransaction, putApprovePayment } from '../../../../../../Slice/eventsManagement/eventsManagementSlice';
 import Denied from '../../Denied/Denied';
 import Approved from '../../Approved/Approved';
-import { Spinner } from '../../../../../Modal/Spinner/Spinner';
 import ModalSellerVoucher from '../../../../../Modal/ModalSellerVoucher/ModalSellerVoucher';
 
 
 
 
 const Voucher = ({ transaction }) => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
   const [imgDocument, setImgDocument] = useState(null)
   const [pdfDocument, setPdfDocument] = useState(null)
   const [showModal, setShowModal] = useState(false)
   const [btnSelector, setBtnSelector] = useState(null)
 
-  const { loading: { put } } = useSelector(state => state.eventsManagement)
-
-  //useEffect que instanciar el urlFile, para hacer un PUT en el handle
   useEffect(() => {
     if (transaction?.format === 'image') {
       setImgDocument(transaction.payment_proof)
     } else {
       setPdfDocument(transaction.payment_proof)
     }
-  }, [])
+  }, [transaction?.format, transaction.payment_proof])
 
 
   const handleBtn = (e) => {
@@ -49,7 +40,11 @@ const Voucher = ({ transaction }) => {
             {imgDocument
               ?
               <div className={Style.imgPreviewWrappper}>
-                <img className={Style.imgPreview} style={{ backgroundImage: `url(${imgDocument})` }} />
+                <img
+                  className={Style.imgPreview}
+                  src={imgDocument}
+                  alt="Payment receipt"
+                />
               </div> :
               pdfDocument
                 ?

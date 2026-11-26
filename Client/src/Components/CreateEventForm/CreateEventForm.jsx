@@ -1,13 +1,12 @@
 import style from './CreateEventForm.module.css'
-import Lateral from './Lateral/Lateral';
 import BasicInfo from './Basic Information/BasicInfo'
 import MoreInfo from './MoreInfo/MoreInfo';
 import Category from './Category/Category';
 import DateTime from './Date&Time/DateTime';
 import Tickets from './Tickets/Tickets';
-import { clear, createEvent } from '../../Slice/CreateEvent/CreateEvent'
+import { clear } from '../../Slice/CreateEvent/CreateEvent'
 import { useSelector, useDispatch } from 'react-redux';
-import { useState } from 'react';
+import { useCallback, useMemo, useRef, useState } from 'react';
 import { useEffect } from 'react';
 import UploadImage from './UploadImage/UploadImage';
 import { getBankAccounts } from '../../Slice/BankAcount/BankAcount';
@@ -15,28 +14,27 @@ import ModalFormEvent from '../Modal/ModalFormEvent/ModalFormEvent';
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import CheckOut from '../Checkout card/CheckoutCard';
 import PackSelection from './PackSelection/PackSelection';
-import Alert from '@mui/material/Alert';
-import Stack from '@mui/material/Stack';
-import AlertTitle from '@mui/material/AlertTitle';
 import ModalCreate from '../Modal/ModalCreate/ModalCreate';
 
 function Form() {
   const dispatch = useDispatch();
-  const { event, preference_id, loading, error } = useSelector(state => state.event);
+  const { event, preference_id, loading } = useSelector(state => state.event);
   const { isLogged } = useSelector(state => state.user);
+  const eventIdRef = useRef(event.id);
+  eventIdRef.current = event.id;
   const [selectedModality, setSelectedModality] = useState('Presential');
   const [showModal, setShowModal] = useState(false);
   const MP_PUBLIC_KEY = process.env.REACT_APP_MP_PUBLIC_KEY
 
-  const stgData = JSON.parse(localStorage.getItem("formEvent"))
+  const stgData = useMemo(() => JSON.parse(localStorage.getItem("formEvent")), []);
 
   const navigate = useNavigate()
 
   useEffect(() => {
     isLogged && dispatch(getBankAccounts());
-  }, []);
+  }, [dispatch, isLogged]);
 
-  function addCheckout() {
+  const addCheckout = useCallback(() => {
     const mp = new window.MercadoPago(MP_PUBLIC_KEY, {
       locale: 'es-AR'
     });
@@ -50,7 +48,7 @@ function Form() {
         elementsColor: '#007F80'
       }
     });
-  }
+  }, [MP_PUBLIC_KEY, preference_id]);
 
   const [created, setCreated]= useState(false);
 
@@ -66,7 +64,7 @@ function Form() {
       setCreated(true);
       // navigate('/Event/' + event.id + '?checkout=true')
       setTimeout(() => {
-        navigate('/Event/' + event.id + '?checkout=true')
+        navigate('/Event/' + eventIdRef.current + '?checkout=true')
       }, 2000); // 2 segundos de retraso
     }
 
@@ -74,7 +72,7 @@ function Form() {
       dispatch(clear())
     }
 
-  }, [preference_id]);
+  }, [addCheckout, dispatch, navigate, preference_id]);
 
 
   const initialState = {
@@ -118,7 +116,7 @@ function Form() {
   const [errors, setErrors] = useState({});
   const [showMsg, setShowMsg] = useState({});
 
-  function validate(input) {
+  const validate = useCallback((input) => {
     let errors = {}
     if (!input.description) { errors.description = 'Description es required' };
     if (input.name.length === 0) {
@@ -164,7 +162,7 @@ function Form() {
 
     if (input.isPaid === true && (input.price === null || input.price.length === 0)) {
       errors.price = 'Price is required'
-    } else if ((input.isPaid === true) && isNaN(parseInt(input.price)) || (parseInt(input.pice)) < 0) {
+    } else if (((input.isPaid === true) && isNaN(parseInt(input.price))) || (parseInt(input.pice)) < 0) {
       errors.price = 'Enter a valid number';
     }
 
@@ -175,7 +173,7 @@ function Form() {
     }
 
     return errors;
-  }
+  }, [selectedModality]);
 
   const [confirm, setConfirm] = useState(null)
   const [query] = useSearchParams()
@@ -186,7 +184,7 @@ function Form() {
       localStorage.setItem("formEvent", JSON.stringify(input));
       localStorage.setItem("lastTime", new Date());
     }
-  }, [input]);
+  }, [confirm, input, validate]);
 
   useEffect(() => {
     if (stgData && stgData.name !== null & stgData.name.length > 0) {
@@ -198,7 +196,7 @@ function Form() {
     } else {
       setConfirm(false)
     }
-  }, [])
+  }, [query, stgData])
 
 
   useEffect(() => {
@@ -208,7 +206,7 @@ function Form() {
       localStorage.removeItem("formEvent");
       localStorage.removeItem("lastTime");
     }
-  }, [confirm]);
+  }, [confirm, stgData]);
 
 
 

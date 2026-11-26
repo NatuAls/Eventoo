@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { MdPets, MdSmokingRooms } from 'react-icons/md';
 import { TbDisabled, TbParking } from 'react-icons/tb';
 import style from './CheckBox.module.css';

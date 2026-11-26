@@ -4,7 +4,6 @@ const covers = {
   "Festivals": require('./Festivals.jpg'),
   "Business meetings": require('./Business_Meetings.jpg'),
   "Exhibitions": require('./Exhibitions.jpg'),
-  "Congresses": require('./Congresses.jpg'),
   "Conventions": require('./Conventions.jpg'),
   "Workshops": require('./Workshops.jpg'),
   "Sports": require('./Sports.jpg'),

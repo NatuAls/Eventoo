@@ -1,16 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react'
-import { useDispatch, useSelector } from 'react-redux';
-import { Link, useNavigate, useParams } from 'react-router-dom';
 import Style from './Voucher.module.css'
-import { loadPaymentProof, cancelTransaction } from '../../../../../../Slice/eventsManagement/eventsManagementSlice';
 import ModalBuysVoucher from '../../../../../Modal/ModalBuysVoucher/ModalBuysVoucher';
 
 
 
 
 const Voucher = ({ transaction }) => {
-  const dispatch = useDispatch()
-  const navigate = useNavigate()
   const [dragActive, setDragActive] = useState(false);
   const [preview, setPreview] = useState(false)
   const [fileIsFetching, setfileIsFetching] = useState(false)
@@ -24,7 +19,6 @@ const Voucher = ({ transaction }) => {
   const refInputImg = useRef()
 
 
-  //useEffect que instanciar el urlFile, para hacer un PUT en el handle
   useEffect(() => {
     if (pdfDocument) {
       seturlFile(pdfDocument)
@@ -35,17 +29,6 @@ const Voucher = ({ transaction }) => {
     }
   }, [pdfDocument, imgDocument])
 
-
-  //handle que realiza el dispatch, de la url
-  // const handleAccept = () => {
-  //   dispatch(loadPaymentProof({ id: transaction, data: { payment_proof: urlFile, format: format } }))
-  //   // navigate(0)
-  // };
-
-  // const handleDelete = () => {
-  //   dispatch(cancelTransaction(transaction))
-  //   navigate(0)
-  // }
 
   const handleBtnAcept = () => {
     setShowModal(!showModal)
@@ -160,7 +143,11 @@ const Voucher = ({ transaction }) => {
                   : imgDocument
                     ?
                     <div className={Style.imgPreviewWrappper}>
-                      <img className={Style.imgPreview} style={{ backgroundImage: `url(${preview})` }} />
+                      <img
+                        className={Style.imgPreview}
+                        src={preview}
+                        alt="Uploaded payment receipt"
+                      />
                     </div>
                     :
                     <div className={Style.imgPreviewWrappper}>

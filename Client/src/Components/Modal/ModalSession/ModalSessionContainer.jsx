@@ -10,7 +10,7 @@ import { clearErrors } from "../../../Slice/User/UserSlice";
 
 
 
-const SessionModal = ({}) => {
+const SessionModal = () => {
   const refModal = useRef();
   const dispatch = useDispatch()
   const {showSessionModal, setShowSessionModal } = useContext(SessionContext);

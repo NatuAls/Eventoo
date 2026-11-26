@@ -66,7 +66,7 @@ function Buys() {
         <div className="sapListHeader">
           <div
             className="sapListItem"
-            id={sortType.type == `organizer` ? "sapSelection" : undefined}
+            id={sortType.type === `organizer` ? "sapSelection" : undefined}
           >
              {sortType.type === 'organizer' ?
               <TiArrowUnsorted
@@ -82,7 +82,7 @@ function Buys() {
           </div>
           <div
             className="sapListItem sapListItemWide"
-            id={sortType.type == `name` ? "sapSelection" : undefined}
+            id={sortType.type === `name` ? "sapSelection" : undefined}
           >
             {sortType.type === 'name' ?
               <TiArrowUnsorted
@@ -98,7 +98,7 @@ function Buys() {
           </div>
           <div
             className="sapListItem sapListItemWide"
-            id={sortType.type == `start_date` ? "sapSelection" : undefined}
+            id={sortType.type === `start_date` ? "sapSelection" : undefined}
           >
             {sortType.type === 'start_date' ?
               <TiArrowUnsorted
@@ -114,7 +114,7 @@ function Buys() {
           </div>
           <div
             className="sapListItem"
-            id={sortType.type == `isPremium` ? "sapSelection" : undefined}
+            id={sortType.type === `isPremium` ? "sapSelection" : undefined}
           >
             {sortType.type === 'isPremium' ?
               <TiArrowUnsorted
@@ -130,7 +130,7 @@ function Buys() {
           </div>
           <div
             className="sapListItem"
-            id={sortType.type == `status` ? "sapSelection" : undefined}
+            id={sortType.type === `status` ? "sapSelection" : undefined}
           >
             {sortType.type === 'status' ?
               <TiArrowUnsorted
@@ -217,15 +217,3 @@ export default Buys;
 // - INWAITING: Luego de que el usuario carga el comprobante y a la espera de que el organizador confirme la operacion
 // - DENIED: Operacion cancelada por el usuario organizador desde INWAITING
 // - APPROVED: Operacion confirmada por el usuario organizador desde INWAITING
-
-
-
-{/* <button className="btnSap">
-                <FaEdit color="darkslateblue" size={25} />
-              </button>
-              <button className="btnSap">
-                <AiOutlineCheck
-                  onClick={() => handledelete(event.id)}
-                  size={35}
-                />
-              </button> */}

@@ -6,8 +6,6 @@ import { MdPendingActions } from 'react-icons/md';
 const Pending = ({
   transaction
 }) => {
-  const totalPrice = transaction.event.price * transaction.tickets.length
-
   return (
     <>
       <div className={styles.container}>

@@ -28,7 +28,7 @@ function Error404() {
         },
       });
     }
-  }, [inView]);
+  }, [animation, inView]);
 
   return (
     <div>

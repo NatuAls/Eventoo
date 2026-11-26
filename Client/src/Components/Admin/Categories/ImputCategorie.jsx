@@ -37,6 +37,7 @@ setImage,
       <img
         src={categorie?.image}
         className={styles.eventImage}
+        alt={categorie?.name || "Category"}
         style={{ maxWidth: "max-content", maxHeight: "100px" }}
         
       />

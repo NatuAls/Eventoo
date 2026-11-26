@@ -33,8 +33,8 @@ const RegisterModal = () => {
   };
 
   const validate = (input) => {
-    const regexp_email = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/;
-    const regexp_pass =  /^(?=.*[!@#$%^&*()_\-+=\[\]{};':"\\|,.<>\/?])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$/;
+    const regexp_email = /^[\w.-]+@([\w-]+\.)+[\w-]{2,4}$/;
+    const regexp_pass =  /^(?=.*[!@#$%^&*()_+=[\]{};':"\\|,.<>/?-])(?=.*[A-Z])(?=.*[a-z])(?=.*[0-9]).{8,}$/;
     const errors = {};
 
     if (input.email.length === 0) {
@@ -110,7 +110,7 @@ const RegisterModal = () => {
       text: "continue_with",
       logo_alignment: "center",
     });
-  }, []);
+  }, [dispatch]);
 
   const [step, setStep] = useState(isNewUser ? styles.s2: styles.s1);
 

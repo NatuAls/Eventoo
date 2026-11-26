@@ -23,7 +23,7 @@ const Review = () => {
     const dispatch = useDispatch();
     const { id } = useParams();
 
-    const [searchParams, setSearchParams] = useSearchParams();
+    const [searchParams] = useSearchParams();
     const stars = searchParams.get("stars");
     const [activeStars, setActiveStars] = useState(stars ? stars : 0);
     const totalStars = 5;
@@ -76,7 +76,7 @@ const Review = () => {
     useEffect(() => {
         dispatch(axiosModeEventDetail(id));
         return () => dispatch(clear());
-    }, [dispatch]);
+    }, [dispatch, id]);
     
     if(loading) return <div className={style.spinner}><div></div><div></div><div></div><div></div></div>;
     if(error || Object.keys(eventDetail).length === 0) return <div className={style.error}>Something was wrong..</div>

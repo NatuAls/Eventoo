@@ -1,10 +1,7 @@
 import React from 'react'
-import { useSelector } from 'react-redux';
-import { Navigate, useNavigate } from 'react-router-dom';
 import Modal from '../Modal'
 import style from './ModalCreate.module.css'
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import { Spinner } from '../Spinner/Spinner';
 
 
 const ModalCreate = ({ setShowModal}) => {

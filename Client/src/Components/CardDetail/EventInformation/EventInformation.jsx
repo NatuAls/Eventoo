@@ -1,9 +1,9 @@
 import React from "react";
 import { useSelector } from "react-redux";
-import { TbDisabled, TbDisabledOff, TbParking, TbParkingOff } from 'react-icons/tb' ;
+import { TbDisabled, TbParking } from 'react-icons/tb' ;
 import { BsFillPeopleFill } from 'react-icons/bs';
 import { RiGitRepositoryPrivateFill } from 'react-icons/ri';
-import { MdPets, MdSmokingRooms, MdSmokeFree } from 'react-icons/md';
+import { MdPets, MdSmokingRooms } from 'react-icons/md';
 import style from './EventInformation.module.css';
 
 const EventInformation = () => {
