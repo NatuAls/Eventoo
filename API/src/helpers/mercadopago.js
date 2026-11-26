@@ -1,10 +1,18 @@
 const { MP_ACCESS_TOKEN, SERVER_URL } = process.env;
 const mercadopago = require("mercadopago");
-mercadopago.configure({
-  access_token: MP_ACCESS_TOKEN,
-});
+const isConfigured = Boolean(MP_ACCESS_TOKEN);
+
+if (isConfigured) {
+  mercadopago.configure({
+    access_token: MP_ACCESS_TOKEN,
+  });
+}
 
 const getMercadoPago = async (eventId, items, client_url) => {
+  if (!isConfigured) {
+    throw new Error("Mercado Pago is not configured. Set MP_ACCESS_TOKEN to enable payments.");
+  }
+
   let preference = {
     items,
     back_urls: {
@@ -29,12 +37,10 @@ const getMercadoPago = async (eventId, items, client_url) => {
     external_reference: client_url
   };
 
-  try {
-    const response = await mercadopago.preferences.create(preference);
-    return response.body.id;
-  } catch (error) {
-    console.log(error);
-  }
+  const response = await mercadopago.preferences.create(preference);
+  return response.body.id;
 };
+
+getMercadoPago.isConfigured = isConfigured;
 
 module.exports = getMercadoPago;

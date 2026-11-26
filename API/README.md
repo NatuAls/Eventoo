@@ -29,8 +29,8 @@ sets `PORT` automatically.
 | `DATABASE_URL` | Yes | Neon pooled PostgreSQL connection string, including SSL parameters |
 | `DB_SSL` | Yes for Neon | Set to `true` to require verified TLS |
 | `SECRET` | Yes | Random secret used to sign JWTs |
-| `MP_ACCESS_TOKEN` | Yes | Mercado Pago access token |
-| `SERVER_URL` | Yes for payment callbacks | Public base URL of the API, e.g. `https://your-api.onrender.com` |
+| `MP_ACCESS_TOKEN` | Only for premium payments | Mercado Pago access token; omit it to disable Mercado Pago payments |
+| `SERVER_URL` | Only for payment callbacks | Public base URL of the API, e.g. `https://your-api.onrender.com` |
 | `GOOGLE_CLIENT_ID` | If Google login is used | Google OAuth client ID |
 | `EMAIL_USER` | If email features are used | SMTP account |
 | `EMAIL_PASS` | If email features are used | SMTP password or app password |
@@ -47,3 +47,7 @@ public Render API URL (without a path), then redeploy the frontend. Set
 On startup, the API synchronizes Sequelize models with `alter: true` and
 populates its initial tables. Use a new/empty Neon database for the first
 deployment and back up existing data before deploying schema changes.
+
+Without `MP_ACCESS_TOKEN`, the API still starts and regular events continue to
+work. Requests to create premium events return HTTP 503 until Mercado Pago is
+configured.

@@ -48,6 +48,16 @@ const createEvent = async (req, res) => {
   )
   }
 
+  if (isPremium && !items) {
+    return res.status(401).send({ msg: "items are required" });
+  }
+
+  if (isPremium && !getMercadoPago.isConfigured) {
+    return res.status(503).json({
+      msg: "Premium event payments are unavailable because Mercado Pago is not configured.",
+    });
+  }
+
   try {
     // if (!name ||
     //     !description ||
@@ -155,8 +165,6 @@ const createEvent = async (req, res) => {
       
       event.isActive = false
       await event.save()
-    } else {
-      if(isPremium) return res.status(401).send({msg: 'items are required'})
     }
 
     await event.reload({
